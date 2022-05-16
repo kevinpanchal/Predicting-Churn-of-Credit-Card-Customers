@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <title>Predicting Churn for Credit Card Customers</title>
+
+  <!-- CSS  -->
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <link href="./static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="./static/css2/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+  <style>
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+
+  <style>
+    p {
+      text-align: center;
+    }
+  </style>
+</head>
+
+
+
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper">
+      <a href="#" style="font-size: 25px; padding: 20px">Chrun Prediction</a>
+      <!-- <a href="#"><img src="/Web-App/templates/1.jpg" alt="Logo" style="width:60px;height:60px;"></a>-->
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#footer">About</a></li>
+        <li><a href="#prediction">Prediction</a></li>
+        <li><a href="#visualization">Visualization</a></li>
+        <li><a href="#creditCard">Credit Card Info</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 style="font-size: 3vw;" class="header center orange-text">Predicting Churn of Credit Card Customer</h1>
+      <div class="row center">
+      </div>
+
+      <div class="row">
+        <form action='/predict' method="post" class="col s12" id="prediction">
+          <div class="row">
+
+
+            <div class="input-field col s4">
+              <label for="_name"><b>Total Revolving Balance</b></label>
+              <br>
+              <input id="_name" name="(-500 - 4000)" placeholder="(-500 - 4000)" type="text" class="validate">
+
+            </div>
+
+            <div class="input-field col s4">
+              <label for="first_name"><b>Total Trasaction Amount</b></label>
+              <br>
+              <input placeholder="(0-20,000)" name="(0-20,000)" id="first_name" type="text" class="validate">
+            </div>
+
+            <div class="input-field col s4">
+
+              <label for="last_name"><b>Total Transaction count</b></label>
+              <br>
+              <input id="last_name" name="(0-120)" placeholder="(0-120)" type="text" class="validate">
+
+            </div>
+
+            <div class="input-field col s4">
+              <label for="_name"><b>Total Count Change in Q4 to Q1</b></label>
+              <br>
+              <input id="name2" name="(0-2.0)" placeholder="(0-2.0)" type="text" class="validate">
+
+            </div>
+
+          </div>
+
+          <div class="row center">
+
+            <button type="submit" class="btn-large waves-effect waves-light orange">Predict</button>
+          </div>
+        </form>
+      </div>
+
+      <br>
+      {{pred}}<br>
+
+    </div>
+  </div>
+
+
+  <br><br>
+
+
+
+
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-20">
+        <!-- <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">credit card</h2> -->
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900" id="creditCard">Fundamentals of
+          Credit Card</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Before we start technical implementation it is absolutely
+          essential that we understand how credit card ecosystem function as a business. For customer it is about making
+          credit history with some convience and rewards. It is easy for credit card customer to show their record and
+          leverage their credibility for any new purchase. In simple term credit card is short term loan for card
+          issuer. With opening up your credit card account, company gives you credit limit in which you can pay bills
+          and do purchases, on this loan company charge you some interest rate and if you miss repayment your penalty
+          charge is rising.
+
+          When customer do payment with credit card, request goes to card issuing company trough processor and card
+          network. Card issuing company process data with pre recorded data and give approval to the processor. By
+          request of merchant, approved money goes to mechant bank from processor. In the end of credit cycle, card
+          issuing company give bill to their customer. All the data set and procedure which we are doing in this project
+          is a part of card issuing bank.
+        </p>
+      </div>
+      <div class="flex flex-wrap">
+        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+          <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Credit card trends that are shaping
+            the payments industry</h2>
+          <p class="leading-relaxed text-base mb-4">The Indian payments industry has witnessed a dramatic shift in
+            recent years in terms of the adoption of digitized technologies and innovations that process transactions
+            within a matter of seconds. As we transition toward a more digital world, the role of credit cards is
+            becoming even more important to facilitate online payments.</p>
+          <a class="text-indigo-500 inline-flex items-center">Learn More
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+          <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">New credit card billing rules
+            effective from July 1
+          </h2>
+          <p class="leading-relaxed text-base mb-4">Card-issuers shall ensure that there is no delay in
+            sending/dispatching/emailing bills/statements and the customer has sufficient number of days (at least one
+            fortnight) for making payment before the interest starts getting charged. In order to obviate frequent
+            complaints of delayed billing, the card-issuer may consider providing bills and statements of accounts
+            through internet/mobile banking with the explicit consent of the cardholder. </p>
+          <a class="text-indigo-500 inline-flex items-center">Learn More
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+          <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">The RBI’s new credit cards rules
+            explained </h2>
+          <p class="leading-relaxed text-base mb-4">The directions earmark which banks may engage in the credit and
+            debit card business. Most Scheduled Commercial Banks (SCBs) with a net worth of Rs. 100 crores can issue
+            credit cards. The exception is Regional Rural banks (RRBs) which need to collaborate with other banks to do
+            so.
+
+          </p>
+          <a class="text-indigo-500 inline-flex items-center">Learn More
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+          <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Using your credit, debit card for
+            these international transactions is prohibited</h2>
+          <p class="leading-relaxed text-base mb-4">If you are a credit card or a debit card holder it is important to
+            know that there are certain international transactions/payments via your internationally enabled credit or
+            debit card are prohibited as per Indian laws. As per the Reserve Bank of India (RBI), an individual having
+            an internationally enabled credit card or debit card is not allowed to make certain payments using the card
+            under the Foreign Exchange Management Act, 1999 (FEMA) read with the Foreign Exchange Management (Current
+            Accou ..
+
+          </p>
+          <a class="text-indigo-500 inline-flex items-center">Learn More
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <footer class="text-gray-600 body-font">
+    <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+      <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
+          viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        <span class="ml-3 text-xl">credit card chrun predictor</span>
+      </a>
+      <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2022
+        chrun predictor —
+        <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" rel="noopener noreferrer"
+          target="_blank">SAHIL | KEVIN</a>
+      </p>
+      <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+        <a class="text-gray-500">
+          <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+            viewBox="0 0 24 24">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+            viewBox="0 0 24 24">
+            <path
+              d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+            </path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            class="w-5 h-5" viewBox="0 0 24 24">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"
+            class="w-5 h-5" viewBox="0 0 24 24">
+            <path stroke="none"
+              d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+            <circle cx="4" cy="4" r="2" stroke="none"></circle>
+          </svg>
+        </a>
+      </span>
+    </div>
+  </footer>
+
+
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src=".js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+</body>
+
+</html>
